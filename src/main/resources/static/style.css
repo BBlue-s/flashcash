@@ -12,7 +12,7 @@ html,body{
   place-items: center;
   background: #ffffff;
 
-   background-image: url(bckgrnd1.jpg);
+   background-image: url(/images/bckgrnd1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }

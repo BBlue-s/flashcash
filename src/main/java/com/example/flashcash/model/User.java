@@ -2,6 +2,8 @@ package com.example.flashcash.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class User {
 @Id
@@ -12,8 +14,8 @@ public class User {
 @Column(unique = true)
 private String email;
 private String password;
-//@ManyToMany
-    //private List<Link>links;
+@ManyToMany
+    private List<Link> links;
 @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 private UserAccount account;
 }
