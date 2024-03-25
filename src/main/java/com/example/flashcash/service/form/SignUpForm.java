@@ -1,5 +1,6 @@
 package com.example.flashcash.service.form;
 
+//@Data
 public class SignUpForm {
     private String firstName;
     private String lastName;

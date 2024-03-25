@@ -1,13 +1,7 @@
 package com.example.flashcash.model;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.grammars.hql.HqlParser;
-
 import java.time.LocalDateTime;
-
 
 @Entity
 public class Transfer {
@@ -15,15 +9,11 @@ public class Transfer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDateTime date;
-
-
-
+    @ManyToOne
+    private User form;
+    @ManyToOne
+    private User to;
     private Double amountBeforeFee;
     private Double  amountAfterFee;
-
-
-
-    private Integer fromId;
-    private Integer toId;
 
 }
