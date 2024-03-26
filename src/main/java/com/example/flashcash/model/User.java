@@ -1,9 +1,11 @@
 package com.example.flashcash.model;
 
 import jakarta.persistence.*;
+import jdk.jfr.DataAmount;
+import lombok.Data;
 
 import java.util.List;
-
+@Data
 @Entity
 public class User {
 @Id

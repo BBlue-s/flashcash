@@ -5,8 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.yaml.snakeyaml.events.Event;
+import lombok.Data;
 
+
+@Data
 @Entity
 public class UserAccount {
     @Id
