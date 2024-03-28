@@ -1,6 +1,8 @@
 package com.example.flashcash.controller;
 
 import ch.qos.logback.core.model.Model;
+import com.example.flashcash.model.User;
+import com.example.flashcash.service.UserService;
 import com.example.flashcash.service.form.SignUpForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,10 @@ import java.lang.module.ModuleFinder;
 
 @Controller
 public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {this.userService = userService;}
 
     @GetMapping("/")
     public ModelAndView home(Model model) {
@@ -29,10 +35,8 @@ public class UserController {
                 ("signup", "signUpForm", new SignUpForm());
     }
 
-
-
-
-
+    @GetMapping("/home")
+    public String logOff(Model model) {return "home";}
 
 
 }

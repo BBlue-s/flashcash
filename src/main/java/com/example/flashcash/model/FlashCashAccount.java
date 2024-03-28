@@ -1,7 +1,9 @@
 package com.example.flashcash.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 public class FlashCashAccount {
     @Id
@@ -9,4 +11,5 @@ public class FlashCashAccount {
     private Integer id;
     private Double totalAmount;
     private Double flashCashAmount;
+
 }

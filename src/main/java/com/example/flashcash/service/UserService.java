@@ -12,17 +12,15 @@ import org.springframework.stereotype.Service;
 @Service ("UserService")
 public class UserService {
 
-    private final SessionService  sessionService;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository ;
-    //private final UserAccountRepository userAccountRepository;
+    private final AccountRepository accountRepository;
 
 
-    public UserService(SessionService sessionService,PasswordEncoder passwordEncoder, UserRepository userRepository, AccountRepository accountRepository) {
-        this.sessionService = sessionService;
+    public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository, AccountRepository accountRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
-
+        this.accountRepository = accountRepository;
     }
 
 public User registration(SignUpForm form) {
@@ -39,6 +37,13 @@ public User registration(SignUpForm form) {
 }
 
 public Iterable<User> getUsers(){return userRepository.findAll();}
+
+    public User findUser(){
+        org.springframework.security.core.userdetails.User springUser =
+                (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userRepository.findUserByEmail(springUser.getUsername())
+                .orElseThrow(()-> new RuntimeException("user with email not found"));
+    }
 
    // public void addIban(final) AddIbanForm form) {
    // UserAccount account = sessionService.sessionUser().getAccount();
